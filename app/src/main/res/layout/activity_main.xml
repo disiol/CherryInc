@@ -20,12 +20,18 @@
         android:layout_height="wrap_content"
         android:onClick="onClickReset"
         android:text="Сбросить на ситемные" />
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickNext"
+        android:text="Следуйшия картинка" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:srcCompat="@drawable/b_3" />
+        app:srcCompat="@drawable/b_1" />
 
 </LinearLayout>
