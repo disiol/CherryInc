@@ -30,6 +30,8 @@ public class ScrinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrin);
         imageView = findViewById(R.id.imageView);
+        imageView.setImageDrawable(getResources().getDrawable(images[imageCaunter]));
+
 
     }
 

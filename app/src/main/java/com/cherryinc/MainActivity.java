@@ -80,19 +80,18 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                getDeplink();
+               showGame();
 
             }
-        }.start();
+        };
 
         if (PreferencesManagerImpl.getMyFirstTime()) {
             //the app is being launched for first time, do something
             Log.e(MYLOG_TEG, "First time");
             PreferencesManagerImpl.setURL(null);
-
+            ramdamImage();
             // TODO first time task
-            PreferencesManagerImpl.setSateStartSte(true);
-            PreferencesManagerImpl.setGameStart(false);
+          getDeplink();
 
             // record the fact that the app has been started at least once
             PreferencesManagerImpl.setMyFirstTime(false);
@@ -100,10 +99,11 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             if (PreferencesManagerImpl.getSateStartSte()) {
+                ramdamImage();
                 waitToshow.start();
             } else if (PreferencesManagerImpl.getGameStart()) {
                 ramdamImage();
-                showGame();
+                waitToshow2.start();
 
             }
 
@@ -154,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ScrinActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+        finish();
 
     }
 
@@ -234,7 +235,8 @@ public class MainActivity extends AppCompatActivity {
                     PreferencesManagerImpl.setSateStartSte(true);
                     PreferencesManagerImpl.setGameStart(false);
 
-                    waitToshow.start();
+                    showGame();
+
                 } else {
                     PreferencesManagerImpl.setSateStartSte(false);
                     PreferencesManagerImpl.setGameStart(true);
