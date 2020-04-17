@@ -23,7 +23,7 @@
         android:onClick="onClick"
         android:layout_marginBottom="2dp"
         android:background="@drawable/oval_button_blue"
-        android:text="Установить обои" />
+        android:text="To set wall-paper" />
     <Button
         android:id="@+id/reset_button"
         android:layout_width="match_parent"
@@ -31,13 +31,13 @@
         android:onClick="onClickReset"
         android:background="@drawable/oval_button_blue"
         android:layout_marginBottom="2dp"
-        android:text="Сбросить на ситемные" />
+        android:text="To drop on system" />
     <Button
         android:id="@+id/next_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClickNext"
         android:background="@drawable/oval_button_blue"
-        android:text="Следуйшия картинка" />
+        android:text="Following picture" />
 
 </LinearLayout>
