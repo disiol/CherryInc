@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String aw = "c";
     public static final String ar = "e";
 
-    public String URL = "www";
+    public String URL = "https://www.u";
     private DownloadTask task;
     private CountDownTimer waitToshow;
     private String uri;
@@ -59,15 +59,11 @@ public class MainActivity extends AppCompatActivity {
 
         imageView = findViewById(R.id.icon_imageView2);
 
-        Random rand = new Random();
-        int n = rand.nextInt(images.length - 1);
-
 
 
         waitToshow = new CountDownTimer(3000, 1) {
             @Override
             public void onTick(long millisUntilFinished) {
-                imageView.setImageDrawable(getResources().getDrawable(images[n], null));
             }
 
             @Override
@@ -94,8 +90,9 @@ public class MainActivity extends AppCompatActivity {
             Log.e(MYLOG_TEG, "First time");
             PreferencesManagerImpl.setURL(null);
 
-            // first time task
-
+            // TODO first time task
+            PreferencesManagerImpl.setSateStartSte(true);
+            PreferencesManagerImpl.setGameStart(false);
 
             // record the fact that the app has been started at least once
             PreferencesManagerImpl.setMyFirstTime(false);
@@ -105,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
             if (PreferencesManagerImpl.getSateStartSte()) {
                 waitToshow.start();
             } else if (PreferencesManagerImpl.getGameStart()) {
+                ramdamImage();
                 showGame();
 
             }
@@ -112,6 +110,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    private void ramdamImage() {
+        Random rand = new Random();
+        int n = rand.nextInt(images.length - 1);
+        imageView.setImageDrawable(getResources().getDrawable(images[n], null));
     }
 
     private void getDeplink() {
@@ -246,9 +250,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
+
+
             e.printStackTrace();
         }
     }

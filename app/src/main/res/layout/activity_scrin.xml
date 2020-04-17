@@ -15,8 +15,7 @@
         android:layout_width="238dp"
         android:layout_height="408dp"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/margin"
-        app:srcCompat="@drawable/b_1" />
+        android:layout_margin="@dimen/margin"/>
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
