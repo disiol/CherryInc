@@ -6,33 +6,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_margin="10dp"
-    android:background="@android:color/black"
+    android:background="@android:color/white"
     tools:context=".ScrinActivity">
 
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="238dp"
+        android:layout_height="408dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/margin"
+        app:srcCompat="@drawable/b_1" />
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClick"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/oval_button_blue"
         android:text="Установить обои" />
     <Button
         android:id="@+id/reset_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClickReset"
+        android:background="@drawable/oval_button_blue"
+        android:layout_marginBottom="2dp"
         android:text="Сбросить на ситемные" />
     <Button
         android:id="@+id/next_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClickNext"
+        android:background="@drawable/oval_button_blue"
         android:text="Следуйшия картинка" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:srcCompat="@drawable/b_1" />
 
 </LinearLayout>

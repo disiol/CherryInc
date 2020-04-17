@@ -18,19 +18,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.facebook.applinks.AppLinkData;
-
 import java.io.IOException;
 
 public class ScrinActivity extends AppCompatActivity {
     ImageView imageView;
-    int [] images = {R.drawable.b_1,R.drawable.b_2,R.drawable.b_3, R.drawable.b_4, R.drawable.b_5, R.drawable.b_6};
+    int [] images = {R.drawable.b_1,R.drawable.b_2,R.drawable.b_3, R.drawable.b_4, R.drawable.b_5, R.drawable.b_6, R.drawable.b_7, R.drawable.b_8, R.drawable.b_9};
     private int imageCaunter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clot);
+        setContentView(R.layout.activity_scrin);
         imageView = findViewById(R.id.imageView);
 
     }
