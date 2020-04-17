@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
@@ -25,6 +26,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 
@@ -33,18 +35,21 @@ import static com.cherryinc.Constants.MYLOG_TEG;
 
 
 public class MainActivity extends AppCompatActivity {
-    public static  final  String q = "a";
-    public static  final  String w = "s.";
-    public static  final  String t= "s";
-    public static  final  String c = "p";
-    public static  final  String rq = "a";
-    public static  final  String aw = "c";
-    public static  final  String ar = "e";
+    public static final String q = "a";
+    public static final String w = "s.";
+    public static final String t = "s";
+    public static final String c = "p";
+    public static final String rq = "a";
+    public static final String aw = "c";
+    public static final String ar = "e";
 
     public String URL = "www";
     private DownloadTask task;
     private CountDownTimer waitToshow;
     private String uri;
+    int[] images = {R.drawable.b_7, R.drawable.b_8, R.drawable.b_9};
+    private CountDownTimer waitToshow2;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +57,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         task = new DownloadTask();
 
+        imageView = findViewById(R.id.icon_imageView2);
+
+        Random rand = new Random();
+        int n = rand.nextInt(images.length - 1);
+
+
 
         waitToshow = new CountDownTimer(3000, 1) {
             @Override
             public void onTick(long millisUntilFinished) {
+                imageView.setImageDrawable(getResources().getDrawable(images[n], null));
             }
 
             @Override
@@ -64,14 +76,25 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+
+        waitToshow2 = new CountDownTimer(3000, 1) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+            }
+
+            @Override
+            public void onFinish() {
+                getDeplink();
+
+            }
+        }.start();
+
         if (PreferencesManagerImpl.getMyFirstTime()) {
             //the app is being launched for first time, do something
             Log.e(MYLOG_TEG, "First time");
             PreferencesManagerImpl.setURL(null);
 
             // first time task
-
-            getDeplink();
 
 
             // record the fact that the app has been started at least once
