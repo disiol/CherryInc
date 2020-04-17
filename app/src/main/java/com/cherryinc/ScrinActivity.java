@@ -82,45 +82,4 @@ public class ScrinActivity extends AppCompatActivity {
     }
 
 
-
-    public void showSite(String uri) {
-        try {
-
-            final Bitmap backButton = BitmapFactory.decodeResource(getResources(), R.drawable.round_done_black_24dp);
-
-            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-            builder.enableUrlBarHiding();
-            builder.setToolbarColor(Color.BLACK);
-            builder.setShowTitle(false);
-            builder.addDefaultShareMenuItem();
-            builder.setCloseButtonIcon(backButton);
-
-            if (!uri.startsWith("http://") && !uri.startsWith("https://")) {
-                uri = "http://" + uri;
-            }
-
-            CustomTabsIntent customTabsIntent = builder.build();
-
-            boolean chromeInstalled = false;
-            for (ApplicationInfo applicationInfo : getPackageManager().getInstalledApplications(0)) {
-                if (applicationInfo.packageName.equals("com.android.chrome")) {
-                    chromeInstalled = true;
-                    break;
-                }
-            }
-            if (chromeInstalled) {
-                customTabsIntent.intent.setPackage("com.android.chrome");
-            }
-
-            customTabsIntent.launchUrl(this, Uri.parse(uri));
-        } catch (Resources.NotFoundException e) {
-
-            if (BuildConfig.DEBUG) {
-                Log.e("my Log" + getLocalClassName(), "showSite: " + e.toString());
-
-                e.printStackTrace();
-            }
-        }
-    }
-
 }
